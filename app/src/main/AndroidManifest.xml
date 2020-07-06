@@ -46,6 +46,11 @@
             android:name=".WeakLockService"
             android:process=":weaklock" />
 
+        <!-- AlarmManager  保持 CPU 唤醒的 Service 服务 -->
+        <service
+            android:name=".AlarmManagerService"
+            android:process=":alrmmanager" />
+
     </application>
 
 </manifest>

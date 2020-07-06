@@ -1,6 +1,5 @@
 package kim.hsl.bp;
 
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,27 +7,31 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Build;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 public class AlarmManagerService extends Service {
     public static final String TAG = "AlarmManagerService";
 
+    /**
+     * 闹钟意图
+     */
     private Intent mAlarmIntent;
+
+    /**
+     * 闹钟管理器
+     */
+    private AlarmManager mAlarmManager;
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
-
 
     @Override
     public void onCreate() {
@@ -42,22 +45,19 @@ public class AlarmManagerService extends Service {
         super.onDestroy();
     }
 
-
     private void alarmKeep(){
-        mAlarmIntent = new Intent();
-        mAlarmIntent.setAction("ACTION");
-        // 延迟意图
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, mAlarmIntent, 0);
-
-        // 闹钟管理器
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
         // 注册广播接受者
         IntentFilter intentFilter = new IntentFilter("ACTION");
         registerReceiver( receiver, intentFilter);
 
-        // 每隔 5 秒发送一次广播
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), 5000, pendingIntent);
+        // 创建延迟意图
+        mAlarmIntent = new Intent();
+        mAlarmIntent.setAction("ACTION");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, mAlarmIntent, 0);
+
+        // 获取闹钟管理器, 并设置每隔 50 秒发送一次广播
+        mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        mAlarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), 50000, pendingIntent);
     }
 
     /**
@@ -73,6 +73,5 @@ public class AlarmManagerService extends Service {
             }
         }
     };
-
 
 }

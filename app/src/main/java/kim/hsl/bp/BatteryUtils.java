@@ -24,9 +24,9 @@ public class BatteryUtils {
         // 判定是否是 AC 交流电充电
         boolean isAc = batteryChargeState == BatteryManager.BATTERY_PLUGGED_AC;
         // 判断是否是 USB 充电
-        boolean isUsb = batteryChargeState == BatteryManager.BATTERY_PLUGGED_AC;
+        boolean isUsb = batteryChargeState == BatteryManager.BATTERY_PLUGGED_USB;
         // 判断是否是 无线充电
-        boolean isWireless = batteryChargeState == BatteryManager.BATTERY_PLUGGED_AC;
+        boolean isWireless = batteryChargeState == BatteryManager.BATTERY_PLUGGED_WIRELESS;
 
         // 如何上述任意一种为 true , 说明当前正在充电
         isBatteryCharging = isAc || isUsb || isWireless;

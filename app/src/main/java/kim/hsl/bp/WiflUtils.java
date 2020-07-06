@@ -2,7 +2,6 @@ package kim.hsl.bp;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 
 public class WiflUtils {

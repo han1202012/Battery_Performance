@@ -6,11 +6,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
 import android.os.PersistableBundle;
+import android.util.Log;
 
 import java.util.List;
 
 public class JobScheduleManager {
-    public static final String TAG = "JobScheduleManager";
+    public static final String TAG = "Battery_Performance.JobScheduleManager";
 
     /**
      * 将不紧急的任务调度到更合适的时机进行处理
@@ -48,6 +49,8 @@ public class JobScheduleManager {
         if(mJobScheduler == null){
             return;
         }
+
+        Log.i(TAG, "添加任务 : " + currentJobData);
 
         // 查找 id 为 0 的 任务
         JobInfo pendingJob = null;

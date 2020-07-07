@@ -46,10 +46,16 @@
             android:name=".WeakLockService"
             android:process=":weaklock" />
 
-        <!-- AlarmManager  保持 CPU 唤醒的 Service 服务 -->
+        <!-- AlarmManager 保持 CPU 唤醒的 Service 服务 -->
         <service
             android:name=".AlarmManagerService"
             android:process=":alrmmanager" />
+
+        <!-- JobScheduler 服务 -->
+        <service
+            android:name=".BpJobService"
+            android:process=":jobservice"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
     </application>
 

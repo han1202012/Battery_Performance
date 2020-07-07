@@ -1,5 +1,6 @@
 package kim.hsl.bp;
 
+import android.annotation.SuppressLint;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
@@ -45,6 +46,7 @@ public class JobScheduleManager {
         }
     }
 
+    @SuppressLint("LongLogTag")
     public void addJob(String currentJobData){
         if(mJobScheduler == null){
             return;

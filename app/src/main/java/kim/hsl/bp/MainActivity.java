@@ -27,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
         // 启动 AlarmManagerService 服务
         startService(new Intent(this, AlarmManagerService.class));
+
+
+        // 引导用户打开白名单
+        WhiteListUtils.addWhiteList(this);
     }
 
 
 
-    /**
+    /*
      * 需要获取的权限列表
      */
     private String[] permissions = new String[]{

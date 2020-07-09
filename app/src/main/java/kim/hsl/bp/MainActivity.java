@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 引导用户打开白名单
-        WhiteListUtils.addWhiteList(this);
+        //WhiteListUtils.addWhiteList(this);
+        WhiteListUtils.addWhiteList2(this);
     }
 
 
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.INTERNET,
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.ACCESS_NETWORK_STATE,
-            Manifest.permission.WAKE_LOCK
+            Manifest.permission.WAKE_LOCK,
+            Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
     };
 
     /**
